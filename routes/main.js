@@ -17,16 +17,17 @@ router.get('/Ronald', (req, res) => res.send('<h1>Welcome Ronald</h1>'))//Ronald
 router.get('/Jemima', (req, res) => res.send('<h1>Welcome Jemima</h1>'))//Jemima 
 // Route with chained handlers using next()
 router.get("/chain", (req, res, next) => {
-	req.message = "Hello from the first function!";
+	req.message = "This is a chain";
 	next(); // move on to the next handler
 },
 	(req, res) => {
-		res.send("<h1>Chaining Example</h1><p>" + req.message + "</p>");
+		res.send("<h1>Chaining</h1><p>" + req.message + "</p>");
 	}
 );
 
 router.get("/file", (req, res) => {
 	// __dirname = current directory (routes folder)
+	//https://nodejs.org/docs/latest/api/modules.html#__dirname
 	res.sendFile(path.join(__dirname, "..", "a.html"));
 });
 
